@@ -38,7 +38,7 @@ plt.style.use('seaborn-darkgrid')
 
 df = pd.read_csv('flight_data.csv')
 
-fig, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(10, 2))
 
 def animate(i):
     plt.cla()
@@ -52,11 +52,12 @@ def animate(i):
     ax.plot(x_vals, y_vals, marker='o', linestyle='-', color='b')
 
     # Customize plot appearance
-    ax.set_xlabel('Flight')
-    ax.set_ylabel('Altitude')
-    ax.set_title('Flight Altitude Visualization')
-    ax.tick_params(axis='x', rotation=45)
+    ax.set_xlabel('Flight', fontsize=10)
+    ax.set_ylabel('Altitude (ft)', fontsize=12)
+    ax.set_title('Flight Altitude Visualization', fontsize=14)
+    ax.tick_params(axis='x', rotation=45, labelsize=10)
     ax.set_ylim(bottom=0)  # Set minimum y-axis value to 0
+    ax.grid(True, linestyle='--', alpha=0.7)
 
 ani = FuncAnimation(fig, animate, frames=len(df) // 20, interval=8000)
 plt.tight_layout()
